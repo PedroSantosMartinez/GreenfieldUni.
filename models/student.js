@@ -11,9 +11,9 @@ const Student = sequelize.define('Student', {
     },
     username: {
         type: DataTypes.STRING(100),
-        defaultValue: 'temporary username',
+        defaultValue: 'Temporary Username',
         unique: true
-      },
+      },                                        // not sure if username is needed at this current moment
     first_name: {
         type: DataTypes.STRING(50),
         allowNull: false
@@ -37,7 +37,7 @@ const Student = sequelize.define('Student', {
     address: {
         type: DataTypes.STRING(255),
     },
-    phone : {
+    phone_num : {
         type: DataTypes.STRING(20),
     },
     enrollment_status: {
