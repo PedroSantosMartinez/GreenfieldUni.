@@ -69,14 +69,25 @@ button.ghost {
 	border-color: #FFFFFF;
 }
 
-form {
+#signUpForm {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
-	height: 100%;
+	height: 75%;
+	text-align: center;
+}
+
+#loginForm {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 70%;
 	text-align: center;
 }
 
@@ -234,3 +245,5 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.hidden

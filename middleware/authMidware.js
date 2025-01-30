@@ -1,3 +1,5 @@
+/** Middleware runs before the request reaches controllers. 
+    It is used for tasks like authentication, logging, error handling, validation, and modifying requests. */
 // Import jsonwebtoken
 import jwt from "jsonwebtoken";
 

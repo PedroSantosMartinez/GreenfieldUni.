@@ -13,7 +13,7 @@
     <!-- Sign Up Form -->
     <div class="form-container sign-up-container">
       <h2>Create an Account</h2>
-      <form id="signUpForm" action="/register" method="post"></form>
+      <form id="signUpForm" action="/register" method="post">
         <label for="sign_up_type">Account Type</label>
         <select id="sign_up_type">
           <option value="student">Student</option>
@@ -27,17 +27,11 @@
         <label for="signup_last_name">Last Name:</label>
         <input type="text" id="signup_last_name" name="last_name" required/>
   
-        <label for="signup_username" class="hidden">Username:</label>
-        <input type="text" id="signup_username" class="hidden"/>
-  
         <label for="signup_email">Email:</label>
         <input type="email" id="signup_email" required/>
   
         <label for="signup_password">Password:</label>
         <input type="password" id="signup_password" required/>
-  
-        <label for="password_confirmation">Password Confirmation:</label>
-        <input type="password" id="password_confirmation" required/>
   
         <button type="submit">Sign Up</button>
       </form>
@@ -48,7 +42,7 @@
     
     <!-- Sign In Form -->
     <div class="form-container sign-in-container">
-      <h2>Login to GFU</h2>
+      <h2 id="loginTitle">Login to GFU</h2>
       <form id="loginForm">
         <label for="login_credential">Username or Email:</label>
         <input type="text" id="login_credential" required/>
