@@ -1,11 +1,20 @@
 import express from 'express';
-import { postRegisterStudent, postLoginStudent, postLogoutStudent } from './authRoutes.js';
-import { loginPage } from './publicRoutes.js';
+import { rootRouter } from './publicRoutes.js'; // Fixed import
+import authRouter from './authRoutes.js';
+import authenticateStudent from '../middleware/authMidware.js';
+import { checkEssentialCourses } from '../middleware/courseMidware.js';
+import { getStudentCourses, getAllCourses } from '../controllers/courseController.js';
+import courseRouter from './courseRoutes.js';
 
-const router = express();
+const router = express.Router();
 
-router.post('/', postRegisterStudent, postLoginStudent, postLogoutStudent);
+// Root Page (Handles `/`)
+router.use('/', rootRouter);
 
-router.use('/', loginPage);
+// Authentication Routes (`/auth/register`, `/auth/login`, `/auth/logout`)
+router.use('/', authRouter);
+
+// Clase Routes
+router.use('/', courseRouter);
 
 export default router;

@@ -17,21 +17,27 @@ const authenticateStudent = (req, res, next) => {
     const token = req.cookies.token;
 
     // If no token is found, deny access
-    if (!token) return res.status(401).json({ message: "Access Denied" });
+    if (!token) {
+         return res.status(401).json({ message: "Access Denied" });
+    }
 
     try {
         // Verify the token using the JWT secret
         const verified = jwt.verify(token, JWT_SECRET);
         
+        // Log the decoded JWT payload
+        console.log("Decoded JWT payload:", verified);
+
         // Attach the decoded student data to the request object
         req.student = verified;
 
         // Proceed to the next middleware or route handler
-        next();
+        return next();
     } catch (error) {
         // If token verification fails (expired, tampered, or invalid), deny access
-        res.status(401).json({ message: "Invalid token" });
+        return res.status(401).json({ message: "Invalid token" });
     }
 };
+
 
 export default authenticateStudent;

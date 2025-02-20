@@ -34,4 +34,5 @@ import sequelize from "../config/dbconfig.js";
         }
     });
 
+
 export default Course;

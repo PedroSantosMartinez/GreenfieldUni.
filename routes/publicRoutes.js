@@ -1,9 +1,10 @@
 import express from 'express';
 
-const loginPage = express.Router();
+const rootRouter = express.Router();
 
-loginPage.use('/', (req, res) => {
-    res.render('auth');
+// Root Route (Homepage or Authentication Page)
+rootRouter.get('/', (req, res) => {
+    res.render('auth'); // This should exist in your views folder as `auth.ejs`
 });
 
-export { loginPage };
+export { rootRouter };
