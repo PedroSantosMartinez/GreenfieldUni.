@@ -1,21 +1,31 @@
 import Course from '../models/courses.js';
+import Student from '../models/student.js';
 import StudentCourse from '../models/student_courses.js';
 
 const essentialCourses = ['ENG 101', 'SOC 101', 'MATH 101', 'BIO 101'];
 
 export const checkEssentialCourses = async (req, res, next) => {
     try {
-        const studentId = req.student.id;
+        const studentId = req.user.id;
+        console.log(studentId);
         
         // Check enrollment for each essential course
         for (const courseName of essentialCourses) {
-            const course = await Course.findOne({ where: { course_name: courseName } });
-            
+        
+            // Fetch all required courses
+            const course = await Course.findOne({
+                where: {
+                    course_name: courseName
+                }
+            });
+
+            // Check courses exists before continuing
             if (!course) {
-                console.log(`Essential course ${courseName} not found in database`);
-                continue;
+                console.error(`Course not found: ${courseName} (Skipping) `);
+                continue; // Skip to the next course
             }
 
+            // Check if the student is already enrolled
             const existingEnrollment = await StudentCourse.findOne({
                 where: {
                     student_id: studentId,
@@ -23,6 +33,7 @@ export const checkEssentialCourses = async (req, res, next) => {
                 }
             });
 
+            // If not enrolled, enroll the student
             if (!existingEnrollment) {
                 await StudentCourse.create({
                     student_id: studentId,
@@ -39,3 +50,5 @@ export const checkEssentialCourses = async (req, res, next) => {
         next(error);
     }
 };
+
+export default checkEssentialCourses;

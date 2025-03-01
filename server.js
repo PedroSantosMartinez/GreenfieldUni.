@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import mainRouter from './routes/mainRoutes.js';
-import { registerStudent, loginStudent } from './controllers/authController.js';
 import seedCourses from './config/seedCourses.js';
 
 // Loads the environment variable from the env. file

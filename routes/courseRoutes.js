@@ -1,17 +1,12 @@
 import express from 'express';
 import authenticateStudent from '../middleware/authMidware.js';
-import { checkEssentialCourses } from '../middleware/courseMidware.js';
-import { getStudentCourses, getAllCourses } from '../controllers/courseController.js';
+import { getStudentCourses } from '../controllers/courseController.js';
+import checkEssentialCourses from '../middleware/courseMidware.js';
 
 const courseRouter = express.Router();
 
-// Middleware to protect all course routes
-courseRouter.use(authenticateStudent, checkEssentialCourses);
+// Enrolled courses display   controller 1        controller 2
+courseRouter.get('/classes', authenticateStudent, getStudentCourses, checkEssentialCourses);
 
-// Enrolled courses display
-courseRouter.get('/classes', getStudentCourses);
-
-// All courses display
-courseRouter.get('/all-courses', getAllCourses);
 
 export default courseRouter;

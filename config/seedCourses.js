@@ -47,7 +47,7 @@ const essentialCourses = [
 
 async function seedCourses() {
     try {
-        await sequelize.sync();
+        await sequelize.sync({ force: false }); // Adjust options as needed
         
         for (const courseData of essentialCourses) {
             await Course.findOrCreate({

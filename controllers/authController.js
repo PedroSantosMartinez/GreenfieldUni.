@@ -11,7 +11,8 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 Hashing before saving ensures the database never holds a plain-text password.
 If something goes wrong, passwords are still safe.
 Hashing after saving is a security risk because unprotected data exists for some time. */
-export const registerStudent = async (req, res) => {
+
+export const registerStudent = async (req, res) => { // this works
     try {
         console.log("Received request to register new student.");
         const { first_name, last_name, email, password } = req.body; // not sure what to do with the student_id and username 
@@ -58,7 +59,7 @@ export const registerStudent = async (req, res) => {
 };
 
 // Authenticates a student and issues a JWT token // Student Login
-export const loginStudent = async (req, res) => {
+export const loginStudent = async (req, res) => {  // this works
     try {
         console.log("Login request received");
         console.log("Request body:", req.body);
@@ -96,12 +97,17 @@ export const loginStudent = async (req, res) => {
         res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production" });
         console.log("Sent token as HTTP-only cookie");
 
-        res.json({ message: "Login successful", token });
-        console.log("Login successful response sent");
+        // Redirect to student home
+        return res.redirect('/student-home');
 
     } catch (error) {
         console.error("Error logging in:", error);
         res.status(500).json({ message: "Error logging in", error: error.message });
+
+        // Ensure we only send one response
+         if (!res.headersSent) {
+            return res.status(500).json({ message: "Error logging in", error: error.message });
+    }
     }
 };
 

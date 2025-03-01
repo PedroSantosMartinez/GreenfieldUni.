@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Access Your Account</title>
     <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body>
@@ -42,7 +42,7 @@
     <!-- Sign In Form -->
     <div class="form-container sign-in-container">
       <h2 id="loginTitle">Login to GFU</h2>
-      <form id="loginForm">
+      <form id="loginForm" action="/login" method="POST">
         <label for="login_credential">Email:</label>
         <input type="text" id="login_credential" required/>
   

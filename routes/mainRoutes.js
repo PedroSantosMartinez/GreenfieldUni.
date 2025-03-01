@@ -1,10 +1,8 @@
 import express from 'express';
 import { rootRouter } from './publicRoutes.js'; // Fixed import
 import authRouter from './authRoutes.js';
-import authenticateStudent from '../middleware/authMidware.js';
-import { checkEssentialCourses } from '../middleware/courseMidware.js';
-import { getStudentCourses, getAllCourses } from '../controllers/courseController.js';
 import courseRouter from './courseRoutes.js';
+import homeRouter from './homeRoutes.js';
 
 const router = express.Router();
 
@@ -16,5 +14,8 @@ router.use('/', authRouter);
 
 // Clase Routes
 router.use('/', courseRouter);
+
+// Dashboard Routes
+router.use('/', homeRouter);
 
 export default router;

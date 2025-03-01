@@ -3,33 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard</title>
+  <title>Student Classes</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-light"></body>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!-- Logo -->
+       
+      <a class="navbar-brand fw-bold text-primary" href="#">GFU</a>
+
+      <!-- Navbar -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-3">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link active" href="/student-home">Student Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Student Service</a>
           </li>
         </ul>
       </div>
+
+      <!-- User Dropdown (Name Initials) -->
       <div class="d-flex align-items-center">
-        <div class="rounded-circle bg-secondary text-white text-center me-3" style="width: 40px; height: 40px; line-height: 40px;">
-          <%= studentInitials %>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="userMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Test
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Preference</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
         </div>
-        <button class="btn btn-primary">User</button>
       </div>
     </div>
   </nav>
@@ -42,34 +57,42 @@
         <div class="card shadow-sm">
           <div class="card-header fw-bold">Classes</div>
           <ul class="list-group list-group-flush">
-            <% enrolledCourses.forEach(function(course) { %>
+            <% if(enrolledCourses && enrolledCourses.length > 0) { %>
+              <% enrolledCourses.forEach(function(course) { %>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <%= course.course.course_name %>
-                <input type="checkbox" class="form-check-input">
-              </li>
+                  <input type="checkbox" class="form-check-input">
+                </li>
             <% }); %>
-          </ul>
-        </div>
+          <% } else { %>
+            <li class="list-group-item">No classes enrolled</li>
+          <% } %>
+        </ul>
       </div>
+    </div>
 
       <!-- Main Content (Modules) -->
       <div class="col-md-9">
         <div class="card shadow-sm">
           <div class="card-header fw-bold">Modules</div>
           <div class="card-body">
+            
             <!-- Dropdown to select a class from enrolled courses -->
             <div class="mb-3">
               <label class="form-label">Select Class</label>
-              <select class="form-select">
-                <% enrolledCourses.forEach(function(course) { %>
-                  <option value="<%= course.course.course_name %>"><%= course.course.course_name %></option>
-                <% }); %>
+              <select id="courseSelect" class="form-select">
+                <option value="all">Show All</option>
+                <% if(enrolledCourses && enrolledCourses.length > 0) { %>
+                  <% enrolledCourses.forEach(function(course) { %>
+                    <option value="<%= course.course.course_name %>"><%= course.course.course_name %></option>
+                  <% }); %>
+                <% } %>
               </select>
             </div>
-
+            
             <!-- Loop over enrolled courses to display course details and modules -->
             <% enrolledCourses.forEach(function(course) { %>
-              <div class="card mb-3">
+              <div class="course-card card mb-3" data-course="<%= course.course_name %>">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0"><%= course.course.course_name %></h5>
@@ -91,5 +114,6 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/javascript/class.js"></script>
 </body>
 </html>

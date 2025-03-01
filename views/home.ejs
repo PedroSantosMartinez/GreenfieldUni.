@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Home</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold text-primary" href="#">GFU</a>
+
+      <!-- Navbar -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="/classes">Classes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Student Service</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Dropdown (Name Initials) -->
+      <div class="d-flex align-items-center">
+        <div class="dropdown">
+          <!-- Replace 'JD' with EJS variable if you have it in your controller -->
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="userMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Test
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Preference</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container my-4">
+    <div class="row">
+      <!-- Left Column: Encouragement Message -->
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header fw-bold">For Students!!!</div>
+          <div class="card-body">
+            <p>💚 Keep pushing forward! You are valued, capable, and loved. Shine bright! 🌟</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Calendar / My Course  WIP -->
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header fw-bold">Calendar / My Course</div>
+          <div class="card-body">
+            <p>Mini Calander to show day (7-day)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Notification Preview & Greenfuel Event -->
+    <div class="row">
+      <!-- Notification Preview -->
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header fw-bold">Notification Preview</div>
+          <div class="card-body">
+            <ul class="list-unstyled">
+               <!-- Event #1 -->
+              <li>📢 <strong> Upcoming Event: Greenfield Sustainability Fair!</strong></li>
+              <li> 📅 April 22, 2025 (Earth Day) | 🕒 12:00 PM - 5:00 PM | 📍 University Greenfield (West Campus)</li>
+              <li>🌱 Join us for a day of eco-friendly workshops, live music, food trucks, and plant giveaways!</li>
+              <hr>
+
+              <!-- Event #2 -->
+              <li>📢 <strong>Volunteer Sign-Up for Greenfield Event Ends Tomorrow!</strong></li>
+              <li>📅 Deadline: April 21, 2025 | 🕒 11:59 PM</li>
+              <li>🌱 Want to be part of the sustainability movement? Sign up now to help with workshops, booths, and event setup!</li>
+              <hr>
+
+              <!-- Event #3 -->
+              <li>📢 <strong>Special Guest Speaker Announced for Greenfield Event!</strong></li>
+              <li>🌍 Meet Dr. Emily Carter, an expert in renewable energy and sustainable living. She’ll be giving a talk on **The Future of Green Technology** at 2:00 PM!</li>
+              <hr>
+
+              <!-- Event #4 -->
+              <li>📢 <strong>Exclusive: Free Eco-Kits at the Greenfield Event! 🌱</strong></li>
+              <li>♻️ Be one of the first 100 attendees and receive a **Reusable Water Bottle & Tote Bag** made from recycled materials!</li>
+              <hr>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greenfuel Event -->
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header fw-bold">Greenfield Event</div>
+          <div class="card-body">
+            <p><strong>📍 Location: </strong> West Campus | <strong>🕒 Time:</strong> 12:00 PM - 5:00 PM | <strong>📅 Date:</strong> Tuesday, April 22, 2025</p>
+            <p>
+              Join us for a day of sustainability, innovation, and community engagement! 🌎💚
+            </p>
+            <ul>
+              <li>✅ Eco-friendly workshops</li>
+              <li>✅ Sustainability talks with guest speakers</li>
+              <li>✅ Local green businesses & vendors</li>
+              <li>✅ DIY upcycling projects</li>
+              <li>✅ Free plant giveaways</li>
+              <li>✅ Live music & food trucks</li>
+            </ul>
+            <p>
+              Whether you're passionate about the environment or just looking for a fun way to spend the day, this event is for you! 🌱♻️
+            </p>
+            <p><strong>📢 RSVP Now</strong> & invite your friends!</p>
+            <!-- Repeat or loop over event details here if needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

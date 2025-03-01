@@ -6,7 +6,7 @@ import Course from "./courses.js";
 const StudentCourse = sequelize.define('StudentCourse', {
     student_id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
+        allowNull: false,
         references: {
             model: Student,
             key: 'student_id'
@@ -14,7 +14,7 @@ const StudentCourse = sequelize.define('StudentCourse', {
     },
     course_id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
+        allowNull: false,
         references: {
             model: Course,
             key: 'course_id'

@@ -131,20 +131,20 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         console.log("Raw response text:", responseText);
         console.log("Status code:", response.status);  
         
-        // Check if the response is valid JSON
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-            throw new Error('Server did not return JSON');
+        // Check if redirected to student-home
+        if (response.redirected) {
+            console.log('Redirected to student-home');
+            window.location.href = '/student-home';
+            return;
         }
-    
-        // Parse the response as JSON
-        const data = JSON.parse(responseText);
+
+        const data = await response.json();
+
 
         // Handle the response
         if (response.ok) {
             console.log('Login successful:', data);
             alert('Login successful!');
-            window.location.href = '/classes';
         } else {
             console.error('Login failed:', data);
             alert(`Login failed: ${data.message}`);
